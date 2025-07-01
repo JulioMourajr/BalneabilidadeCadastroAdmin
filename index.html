@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Balneabilidade</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+        }
+
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: #f5f5f5;
+            padding: 20px;
+            overflow-y: auto;
+            border-left: 2px solid #ddd;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .praia-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .praia-item.proprio {
+            border-left: 4px solid green;
+        }
+
+        .praia-item.improprio {
+            border-left: 4px solid red;
+        }
+
+        .praia-info {
+            flex: 1;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .status.proprio {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status.improprio {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .btn-remove {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        small {
+            display: block;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .legend {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .legend-color.proprio {
+            background: green;
+        }
+
+        .legend-color.improprio {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <div class="sidebar">
+        <div class="header">
+            <h2>Sistema de Balneabilidade</h2>
+            <p>Clique no mapa para adicionar pontos</p>
+        </div>
+
+        <div class="legend">
+            <h4>Legenda:</h4>
+            <div class="legend-item">
+                <div class="legend-color proprio"></div>
+                <span>Própria para banho</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color improprio"></div>
+                <span>Imprópria para banho</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="btn-limpar" class="btn btn-danger">
+                Limpar Todos
+            </button>
+        </div>
+
+        <div>
+            <h3>Praias Cadastradas:</h3>
+            <div id="lista-praias"></div>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
